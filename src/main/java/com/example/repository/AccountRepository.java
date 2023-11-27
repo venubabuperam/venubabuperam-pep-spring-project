@@ -1,4 +1,21 @@
 package com.example.repository;
 
-public interface AccountRepository {
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import com.example.entity.Account;
+
+/*
+ * Jpa Interface for the Account entity
+ */
+public interface AccountRepository extends JpaRepository<Account, Integer>{
+    
+    @Query(value = "SELECT * FROM account WHERE account_id = ?1", nativeQuery = true)
+    Optional<Account> findAccountByID(int id);
+
+    @Query(value = "SELECT * FROM account WHERE username = ?1", nativeQuery = true)
+    Optional<Account> findAccountByUsername(String username);
+    
 }

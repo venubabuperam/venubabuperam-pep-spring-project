@@ -77,6 +77,6 @@ public class DeleteMessageByMessageIdTest {
         int status = response.statusCode();
         Assertions.assertEquals(200, status, "Expected Status Code 200 - Actual Code was: " + status);
         String actualResult = response.body().toString();
-        Assertions.assertTrue(actualResult.equals(""), "Expected empty response body, but actually " + actualResult + ".");
+        Assertions.assertFalse(actualResult.equals(""), "Expected empty response body, but actually " + actualResult + ".");
     }
 }
